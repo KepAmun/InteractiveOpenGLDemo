@@ -7,8 +7,8 @@ using namespace std;
 class Vertex
 {
 private:
-	float* m_coord3fv;
-	float* m_texCoord2fv;
+	float m_coord3fv[3];
+	float m_texCoord2fv[2];
 
 public:
 	Vertex();

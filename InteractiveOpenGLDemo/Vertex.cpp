@@ -6,9 +6,11 @@ Vertex::Vertex()
 {
 }
 
-Vertex::Vertex(float* v)
+Vertex::Vertex(float v[])
 {
-	m_coord3fv = v;
+	m_coord3fv[0] = v[0];
+	m_coord3fv[1] = v[1];
+	m_coord3fv[2] = v[2];
 }
 
 Vertex::Vertex(double x, double y, double z)
@@ -18,7 +20,6 @@ Vertex::Vertex(double x, double y, double z)
 
 void Vertex::SetCoords(double x, double y, double z)
 {
-	m_coord3fv = new float[3];
 	m_coord3fv[0] = x;
 	m_coord3fv[1] = y;
 	m_coord3fv[2] = z;
@@ -26,7 +27,6 @@ void Vertex::SetCoords(double x, double y, double z)
 
 void Vertex::SetTexCoord(float s, float t)
 {
-    m_texCoord2fv = new float[2];
     m_texCoord2fv[0] = s;
     m_texCoord2fv[1] = t;
 }

@@ -79,12 +79,12 @@ void Model::LoadObjFile(string filepath)
 
 void Model::LoadVertices(ifstream &inFile)
 {
-	m_minX = 0x7FFFFFFF;
-	m_maxX = -0x7FFFFFFF;
-	m_minY = 0x7FFFFFFF;
-	m_maxY = -0x7FFFFFFF;
-	m_minZ = 0x7FFFFFFF;
-	m_maxZ = -0x7FFFFFFF;
+	m_minX = FLT_MAX;
+	m_maxX = -FLT_MAX;
+	m_minY = FLT_MAX;
+	m_maxY = -FLT_MAX;
+	m_minZ = FLT_MAX;
+	m_maxZ = -FLT_MAX;
 
 	while (!inFile.eof())
 	{

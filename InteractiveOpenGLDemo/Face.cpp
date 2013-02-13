@@ -13,7 +13,7 @@ Face::Face(Vertex* va, Vertex* vb, Vertex* vc)
 	m_vertices[2] = vc;
 
     float* n = CalculateNormal(vb->GetCoord3fv(),va->GetCoord3fv(),vc->GetCoord3fv());
-       
+
     m_normal3fv[0] = n[0];
     m_normal3fv[1] = n[1];
     m_normal3fv[2] = n[2];
@@ -59,10 +59,7 @@ float* Face::GetNormal3fv()
 
 float* Face::CalculateNormal(float v1[],float v2[],float v3[])
 {
-//    void Model::CalculateVectorNormal(float fVert1[], float fVert2[],
-//		float fVert3[], float *fNormalX, float *fNormalY, float *fNormalZ)
-
-    float n[3];
+    float *n = new float[3];
 
 	GLfloat Qx, Qy, Qz, Px, Py, Pz;
 

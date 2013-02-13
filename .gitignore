@@ -1,5 +1,12 @@
 *.sdf
 *.suo
 *.user
+*.obj
+*.log
+*.tlog
+*.pdb
+*.lastbuildstate
+*.unsuccessfulbuild
+*.opensdf
 Debug/
 ipch/
