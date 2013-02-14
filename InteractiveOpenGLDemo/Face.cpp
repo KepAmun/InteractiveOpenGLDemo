@@ -12,11 +12,8 @@ Face::Face(Vertex* va, Vertex* vb, Vertex* vc)
 	m_vertices[1] = vb;
 	m_vertices[2] = vc;
 
-    float* n = CalculateNormal(vb->GetCoord3fv(),va->GetCoord3fv(),vc->GetCoord3fv());
+    CalculateNormal();
 
-    m_normal3fv[0] = n[0];
-    m_normal3fv[1] = n[1];
-    m_normal3fv[2] = n[2];
 
 /*	for (int i = 0; i < 3; i++)
 	{
@@ -57,28 +54,29 @@ float* Face::GetNormal3fv()
     return m_normal3fv;
 }
 
-float* Face::CalculateNormal(float v1[],float v2[],float v3[])
+void Face::CalculateNormal()
 {
-    float *n = new float[3];
-
-	GLfloat Qx, Qy, Qz, Px, Py, Pz;
-
-	Qx = v2[0] - v1[0];
-	Qy = v2[1] - v1[1];
-	Qz = v2[2] - v1[2];
-	Px = v3[0] - v1[0];
-	Py = v3[1] - v1[1];
-	Pz = v3[2] - v1[2];
+    float *v2 = m_vertices[0]->GetCoord3fv();
+    float *v1 = m_vertices[1]->GetCoord3fv();
+    float *v3 = m_vertices[2]->GetCoord3fv();
+    float *n = m_normal3fv;
     
-	n[0] = Py * Qz - Pz * Qy;
-	n[1] = Pz * Qx - Px * Qz;
-	n[2] = Px * Qy - Py * Qx;
-
+    GLfloat Qx, Qy, Qz, Px, Py, Pz;
+    
+    Qx = v2[0] - v1[0];
+    Qy = v2[1] - v1[1];
+    Qz = v2[2] - v1[2];
+    Px = v3[0] - v1[0];
+    Py = v3[1] - v1[1];
+    Pz = v3[2] - v1[2];
+    
+    n[0] = Py * Qz - Pz * Qy;
+    n[1] = Pz * Qx - Px * Qz;
+    n[2] = Px * Qy - Py * Qx;
+    
     float ln = sqrt(n[0]*n[0]+n[1]*n[1]+n[2]*n[2]);
     
     n[0] /= ln;
     n[1] /= ln;
     n[2] /= ln;
-
-    return n;
 }
