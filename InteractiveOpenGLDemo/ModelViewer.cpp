@@ -246,30 +246,44 @@ void ModelViewer::Display()
     // Render framing box
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glDisable(GL_LIGHTING);
+    
+    glColor3f(0.8,0.8,0.8);
 
-    glBegin(GL_QUADS);
+    // Top
+    glBegin(GL_LINE_LOOP);
     {
-        glColor3f(0.8,0.8,0.8);
-        
         glVertex3f(1,1,1);
         glVertex3f(1,1,-1);
         glVertex3f(-1,1,-1);
         glVertex3f(-1,1,1);
-        
+    }
+    glEnd();
+
+    // Bottom
+    glBegin(GL_LINE_LOOP);
+    {   
         glVertex3f(1,-1,1);
         glVertex3f(1,-1,-1);
         glVertex3f(-1,-1,-1);
         glVertex3f(-1,-1,1);
-
+    }
+    glEnd();
+    
+    // Sides
+    glBegin(GL_LINES);
+    {
         glVertex3f(1,1,1);
+        glVertex3f(1,-1,1);
+        
         glVertex3f(1,1,-1);
         glVertex3f(1,-1,-1);
-        glVertex3f(1,-1,1);
 
-        glVertex3f(-1,-1,-1);
-        glVertex3f(-1,-1,1);
         glVertex3f(-1,1,1);
+        glVertex3f(-1,-1,1);
+
         glVertex3f(-1,1,-1);
+        glVertex3f(-1,-1,-1);
+
     }
     glEnd();
 
@@ -294,7 +308,7 @@ void ModelViewer::Display()
 
     glPopMatrix();
     glEnable(GL_DEPTH_TEST);
-
+    
 
 	glutSwapBuffers();
 }
